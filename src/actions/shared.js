@@ -3,16 +3,18 @@ import {
   _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer
-} from "../utils/_DATA";
+} from "../utils/_DATA.js";
 import { receiveUsers } from "../actions/users";
 import { receiveQuestions } from "../actions/questions";
 import { setAuthedUser } from "../actions/authedUser";
+import { showLoading, hideLoading } from "react-redux-loading";
 
 export function handleInitialData() {
   return dispatch => {
-    return _getUsers().then(({ users }) => {
-      console.log(users);
+    dispatch(showLoading());
+    return _getUsers().then(users => {
       dispatch(receiveUsers(users));
+      dispatch(hideLoading());
     });
   };
 }

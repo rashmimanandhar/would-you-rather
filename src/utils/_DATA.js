@@ -114,7 +114,6 @@ let questions = {
     }
   }
 };
-
 function generateUID() {
   return (
     Math.random()
@@ -126,7 +125,6 @@ function generateUID() {
   );
 }
 export function _getUsers() {
-  console.log("msg");
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000);
   });
