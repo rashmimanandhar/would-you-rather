@@ -125,8 +125,8 @@ function generateUID() {
       .substring(2, 15)
   );
 }
-
 export function _getUsers() {
+  console.log("msg");
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000);
   });

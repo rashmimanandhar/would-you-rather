@@ -1,16 +1,18 @@
-import { getInitialData } from "../utils/api";
+import {
+  _getUsers,
+  _getQuestions,
+  _saveQuestion,
+  _saveQuestionAnswer
+} from "../utils/_DATA";
 import { receiveUsers } from "../actions/users";
 import { receiveQuestions } from "../actions/questions";
 import { setAuthedUser } from "../actions/authedUser";
 
-const AUTH_ID = "sarahedo";
-
 export function handleInitialData() {
   return dispatch => {
-    return getInitialData().then(({ users, questions }) => {
+    return _getUsers().then(({ users }) => {
+      console.log(users);
       dispatch(receiveUsers(users));
-      dispatch(receiveQuestions(questions));
-      dispatch(setAuthedUser(AUTH_ID));
     });
   };
 }
