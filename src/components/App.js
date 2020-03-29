@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Signin from "./Signin";
-
+import Dashboard from "./Dashboard";
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -10,9 +11,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Signin />
-      </div>
+      <Router>
+        <div className="h-100">
+          <Route path="/login" exact component={Signin} />
+          <Route path="/" component={Dashboard} />
+        </div>
+      </Router>
     );
   }
 }

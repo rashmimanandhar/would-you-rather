@@ -1,11 +1,5 @@
-import {
-  _getUsers,
-  _getQuestions,
-  _saveQuestion,
-  _saveQuestionAnswer
-} from "../utils/_DATA.js";
+import { _getUsers } from "../utils/_DATA.js";
 import { receiveUsers } from "../actions/users";
-import { receiveQuestions } from "../actions/questions";
 import { setAuthedUser } from "../actions/authedUser";
 import { showLoading, hideLoading } from "react-redux-loading";
 
