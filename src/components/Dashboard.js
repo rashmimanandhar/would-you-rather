@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Nav from "./Nav.js";
 import QuestionList from "./QuestionList.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -17,7 +16,6 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <Nav />
         <QuestionList />
       </div>
     );

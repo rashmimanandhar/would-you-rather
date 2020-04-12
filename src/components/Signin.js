@@ -27,7 +27,9 @@ class Signin extends Component {
   render() {
     const { usersId } = this.props;
     const { selectedUser, loggedIn } = this.state;
+    console.log(loggedIn + " logged in");
     if (loggedIn === true) {
+      console.log("redirected to");
       return <Redirect to="/" />;
     }
     return (
