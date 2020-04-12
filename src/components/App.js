@@ -14,6 +14,7 @@ class App extends Component {
       <Router>
         <div className="h-100">
           <Route path="/login" exact component={Signin} />
+          <Route path="/questions/:id" exact component={AnswerPage} />
           <Route path="/" component={Dashboard} />
         </div>
       </Router>
