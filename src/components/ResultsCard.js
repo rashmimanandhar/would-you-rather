@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Row, Col, Card, Icon, CardTitle } from "react-materialize";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Card, CardTitle, Col, Icon, Row} from "react-materialize";
+import {Link} from "react-router-dom";
 
 class ResultsCard extends Component {
   render() {
-    const { id, yourAns, question } = this.props;
-    const { author, optionOne, optionTwo } = question;
+    const {id, yourAns, question} = this.props;
+    const {author, optionOne, optionTwo} = question;
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
     const totalVotes = optionOneVotes + optionTwoVotes;
@@ -20,7 +20,7 @@ class ResultsCard extends Component {
               actions={[<Link to="/">Go Back</Link>]}
               closeIcon={<Icon>close</Icon>}
               header={
-                <CardTitle image="https://materializecss.com/images/sample-1.jpg" />
+                <CardTitle image="https://materializecss.com/images/sample-1.jpg"/>
               }
               horizontal
               revealIcon={<Icon>more_vert</Icon>}
