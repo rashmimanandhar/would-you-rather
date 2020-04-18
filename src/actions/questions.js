@@ -21,7 +21,6 @@ function saveAnswer(tweet) {
 export function answerQuestion(answer, questionId) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
-    console.log(authedUser);
     dispatch(showLoading());
     return _saveQuestionAnswer({
       authedUser,

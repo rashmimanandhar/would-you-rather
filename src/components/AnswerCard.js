@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Card, CardTitle, Col, Icon, RadioGroup, Row,} from "react-materialize";
+import {Card, CardTitle, Col, Icon, Row,} from "react-materialize";
 import {RadioButton} from 'react-materialize-forms';
 import {Redirect} from "react-router-dom";
+import {connect} from "react-redux";
 import {answerQuestion} from "../actions/questions";
 
 class AnswerCard extends Component {
@@ -12,14 +13,15 @@ class AnswerCard extends Component {
 
   handleChange = e => {
     console.log(e)
-    this.setState({selectedOption: e.label});
+    this.setState({selectedOption: e.group});
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const {selectedOption} = this.state;
     const {dispatch, id} = this.props;
-    // dispatch(answerQuestion(selectedOption, id));
+    console.log(selectedOption)
+    dispatch(answerQuestion(selectedOption, id));
     this.setState(() => ({selectedOption: "", toHome: true}));
   }
 
@@ -53,13 +55,14 @@ class AnswerCard extends Component {
                 <>
                   <RadioButton
                     label={optionOne.text}
-                    group="radio-group"
+                    value="optionOne"
+                    group="optionOne"
                     onChange={this.handleChange}
                     withGap
                   />
                   <RadioButton
                     label={optionTwo.text}
-                    group="radio-group"
+                    group="optionTwo"
                     onChange={this.handleChange}
                     withGap
                   />
@@ -76,4 +79,12 @@ class AnswerCard extends Component {
   }
 }
 
-export default AnswerCard;
+function mapStateToProps({authedUsers}, {id, question}) {
+  return {
+    authedUsers,
+    question,
+    id
+  }
+}
+
+export default connect(mapStateToProps)(AnswerCard);
