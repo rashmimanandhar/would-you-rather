@@ -9,7 +9,7 @@ class QuestionCard extends Component {
     return (
       <div>
         <Row>
-          <Col m={6} s={12}>
+          <Col m={6} s={12}  push="m3">
             <Card
               actions={[
                 <Link key={id} to={`/questions/${id}`}>
