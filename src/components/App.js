@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import { handleInitialData } from "../actions/shared";
+import React, {Component} from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {connect} from "react-redux";
+import {handleInitialData} from "../actions/shared";
 import Signin from "./Signin";
 import Dashboard from "./Dashboard";
 import QuestionPage from "./QuestionPage";
 import Nav from "./Nav";
+import NewQuestion from "./NewQuestion";
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -16,20 +18,24 @@ class App extends Component {
     return (
       <Router>
         <div className="h-100">
-          <Route path="/login" exact component={Signin} />
-          {this.props.loading ? null : <Nav />}
-          <div>
+          <Route path="/" exact component={Signin}/>
+          {this.props.loading ? null : (
+            <div>
+            <Nav/>
             <Route path="/questions/:id" exact component={QuestionPage} />
-            <Route path="/" exact component={Dashboard} />
-          </div>
+            <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/add" exact component={NewQuestion} />
+            </div>)}
         </div>
       </Router>
     );
   }
 }
-function mapStateToProps({ authedUser }) {
+
+function mapStateToProps({authedUser}) {
   return {
     loading: authedUser === null
   };
 }
+
 export default connect(mapStateToProps)(App);

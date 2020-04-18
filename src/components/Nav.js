@@ -28,16 +28,16 @@ class Nav extends Component {
           preventScrolling: true
         }}
       >
-        <NavLink to="/" exact activeClassName="active">
+        <NavLink to="/dashboard" activeClassName="active">
           Dashboard
         </NavLink>
-        <NavLink to="/new" activeClassName="active">
+        <NavLink to="/add" activeClassName="active">
           New Poll
         </NavLink>
         <NavLink to="/leaderboard" activeClassName="active">
           Leader Board
         </NavLink>
-        <NavLink to="/login" onClick={this.handleLogout}>
+        <NavLink to="/" exact onClick={this.handleLogout}  activeClassName="active">
           Logout
         </NavLink>
       </Navbar>

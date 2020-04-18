@@ -30,7 +30,7 @@ class Signin extends Component {
     console.log(loggedIn + " logged in");
     if (loggedIn === true) {
       console.log("redirected to");
-      return <Redirect to="/" />;
+      return <Redirect to="/dashboard" />;
     }
     return (
       <div className="valign-wrapper h-100 NavBar">
