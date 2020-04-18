@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Card, CardTitle, Col, Icon, RadioGroup, Row,} from "react-materialize";
+import {RadioButton} from 'react-materialize-forms';
 import {Redirect} from "react-router-dom";
 import {answerQuestion} from "../actions/questions";
 
@@ -10,19 +11,21 @@ class AnswerCard extends Component {
   };
 
   handleChange = e => {
-    this.setState({selectedOption: e.target.value});
+    console.log(e)
+    this.setState({selectedOption: e.label});
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const {selectedOption} = this.state;
     const {dispatch, id} = this.props;
-    dispatch(answerQuestion(selectedOption, id));
-    this.setState(() => ({selectedOption: "", toHome: id ? false : true}));
+    // dispatch(answerQuestion(selectedOption, id));
+    this.setState(() => ({selectedOption: "", toHome: true}));
   }
 
   render() {
     const {selectedOption, toHome} = this.state;
+    console.log(toHome);
     if (toHome === true) {
       return <Redirect to="/"/>;
     }
@@ -47,23 +50,22 @@ class AnswerCard extends Component {
               >
                 <h5>{author} asks</h5>
                 Would you rather
-                <RadioGroup
-                  label="Options"
-                  name="option"
-                  onChange={this.handleChange}
-                  options={[
-                    {
-                      label: optionOne.text,
-                      value: optionOne.text,
-                    },
-                    {
-                      label: optionTwo.text,
-                      value: optionTwo.text,
-                    }
-                  ]}
-                  value="optionOne.text"
-                  withGap
-                />
+                <>
+                  <RadioButton
+                    label={optionOne.text}
+                    group="radio-group"
+                    onChange={this.handleChange}
+                    withGap
+                  />
+                  <RadioButton
+                    label={optionTwo.text}
+                    group="radio-group"
+                    onChange={this.handleChange}
+                    withGap
+                  />
+
+                </>
+
               </Card>
             </Col>
           </Row>
