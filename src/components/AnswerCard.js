@@ -3,7 +3,7 @@ import {Card, CardTitle, Col, Icon, Row,} from "react-materialize";
 import {RadioButton} from 'react-materialize-forms';
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {answerQuestion} from "../actions/questions";
+import {answerQuestion} from "../actions/shared";
 
 class AnswerCard extends Component {
   state = {
@@ -12,7 +12,6 @@ class AnswerCard extends Component {
   };
 
   handleChange = e => {
-    console.log(e)
     this.setState({selectedOption: e.group});
   }
 
@@ -20,14 +19,12 @@ class AnswerCard extends Component {
     e.preventDefault();
     const {selectedOption} = this.state;
     const {dispatch, id} = this.props;
-    console.log(selectedOption)
     dispatch(answerQuestion(selectedOption, id));
     this.setState(() => ({selectedOption: "", toHome: true}));
   }
 
   render() {
     const {selectedOption, toHome} = this.state;
-    console.log(toHome);
     if (toHome === true) {
       return <Redirect to="/"/>;
     }

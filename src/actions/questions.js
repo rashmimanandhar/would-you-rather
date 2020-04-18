@@ -1,5 +1,5 @@
-import { showLoading, hideLoading } from "react-redux-loading";
-import {_saveQuestionAnswer} from "../utils/_DATA";
+import {hideLoading, showLoading} from "react-redux-loading";
+
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const SAVE_ANSWER = "SAVE_ANSWER"
@@ -11,23 +11,12 @@ export function receiveQuestions(questions) {
   };
 }
 
-function saveAnswer(tweet) {
+export function saveAnswer(authedUser, qid, answer) {
   return {
     type: SAVE_ANSWER,
-    tweet
+    authedUser,
+    qid,
+    answer
   };
 }
 
-export function answerQuestion(answer, questionId) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState();
-    dispatch(showLoading());
-    return _saveQuestionAnswer({
-      authedUser,
-      qid: questionId,
-      answer
-    })
-      .then(() => dispatch(saveAnswer()))
-      .then(() => dispatch(hideLoading()));
-  };
-}

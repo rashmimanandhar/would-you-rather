@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getQuestions } from "../actions/shared";
 import { Tabs, Tab } from "react-materialize";
 import QuestionCard from "./QuestionCard.js";
 
 class QuestionList extends Component {
-  componentDidMount() {
-    this.props.dispatch(getQuestions());
-  }
+
   render() {
     const { questions, users, authedUser } = this.props;
     // what happens if authedUser is not found
