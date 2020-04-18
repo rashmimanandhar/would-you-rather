@@ -9869,6 +9869,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-materialize-forms@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-materialize-forms/-/react-materialize-forms-1.1.2.tgz#f4fdedfe1bb21fcd0da8ced82693fb31b8695179"
+  integrity sha512-+ba144xttssYLcJRPwrs/G2EDTaK15SfTalNKQhFi2LfFJTeAtAPoc+wcZlAFQ5L8S2wDo9nSHthvQ4Jh7JG1g==
+
 react-materialize@^3.7.1:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-3.8.3.tgz#68de13d5830e1ab36ece58fb24697755a1bb307c"
