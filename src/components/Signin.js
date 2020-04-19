@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import "materialize-css";
 import { Button, Card, Row, Col, Icon } from "react-materialize";
 import { setAuthedUser } from "../actions/authedUser";
-import { Redirect } from "react-router-dom";
 
 class Signin extends Component {
   state = {
@@ -25,10 +24,8 @@ class Signin extends Component {
   };
 
   render() {
-    const { usersId, authedUser } = this.props;
+    const { usersId } = this.props;
     const { selectedUser } = this.state;
-    console.log(authedUser, usersId);
-    console.log(selectedUser);
     return (
       <div className="valign-wrapper h-100 NavBar">
         <Row>
@@ -71,10 +68,9 @@ class Signin extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users }) {
   return {
-    usersId: Object.keys(users),
-    authedUser
+    usersId: Object.keys(users)
   };
 }
 export default connect(mapStateToProps)(Signin);

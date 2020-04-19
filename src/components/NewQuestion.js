@@ -35,7 +35,7 @@ class NewQuestion extends Component {
 
   render() {
     if (this.state.toHome === true) {
-      return <Redirect to="/dashboard"/>;
+      return <Redirect to="/"/>;
     }
     return (
       <form className="new-poll" onSubmit={this.handleSubmit}>

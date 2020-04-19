@@ -1,5 +1,6 @@
 import {hideLoading, showLoading} from "react-redux-loading";
 import {_saveQuestion} from "../utils/_DATA";
+import {updateUserQuestion} from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const SAVE_ANSWER = "SAVE_ANSWER"
@@ -30,6 +31,9 @@ export function handleNewQuestion(optionOne, optionTwo) {
       optionTwoText: optionTwo,
       author: authedUser
     }).then(question => dispatch(saveQuestion(question)))
+      .then(response =>
+        dispatch(updateUserQuestion(authedUser, response.question.id))
+      )
       .then(() => dispatch(hideLoading()));
   }
 }

@@ -24,7 +24,7 @@ class ResultsCard extends Component {
         <Row>
           <Col m={6} s={12} push="m3">
             <Card
-              actions={[<Link key={id} to="/dashboard">Go Back</Link>]}
+              actions={[<Link key={id} to="/">Go Back</Link>]}
               closeIcon={<Icon>close</Icon>}
               header={
                 <CardTitle image="https://materializecss.com/images/sample-1.jpg"/>
