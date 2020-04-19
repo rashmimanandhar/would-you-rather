@@ -18,7 +18,7 @@ class QuestionCard extends Component {
               ]}
               closeIcon={<Icon>close</Icon>}
               header={
-                <CardTitle image="https://materializecss.com/images/sample-1.jpg">
+                <CardTitle image={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&size=128&name=${author}`}>
                   {author} asks
                 </CardTitle>
               }

@@ -16,15 +16,16 @@ class Leaderboard extends Component {
             return scoreB - scoreA;
           }).map(user => (
 
-            <Card key={user.id} title={user.username}>
+            <Card key={user.id} title={user.name}>
               <Row>
-                <Col>Image</Col>
                 <Col>
-                  <Row><span>{user.name}</span></Row>
+                  <img src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&size=128&name=${user.name}`} alt=""/>
+                </Col>
+                <Col>
                   <Row><span>Answered Questions: {Object.keys(user.answers).length}</span></Row>
                   <Row><span>Created Questions: {user.questions.length}</span></Row>
+                  <Row><span>Score : {Object.keys(user.answers).length + user.questions.length}</span></Row>
                 </Col>
-                <Col>Score : {Object.keys(user.answers).length + user.questions.length}</Col>
               </Row>
             </Card>
           ))}
