@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Card, CardTitle, Col, Icon, Row,} from "react-materialize";
+import {Card, CardTitle, Col, Icon, RadioGroup, Row,} from "react-materialize";
 import {RadioButton} from 'react-materialize-forms';
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
@@ -8,11 +8,14 @@ import {answerQuestion} from "../actions/shared";
 class AnswerCard extends Component {
   state = {
     selectedOption: "",
-    toHome: false
+    toHome: false,
+    options: []
   };
-
-  handleChange = e => {
-    this.setState({selectedOption: e.group});
+ test = "";
+  handleChange = (input) => {
+    const selectedOption = this.state.options.indexOf(input.label) === 0 ? "optionOne" : "optionTwo";
+    console.log(selectedOption);
+    this.setState({selectedOption: selectedOption});
   }
 
   handleSubmit = e => {
@@ -21,6 +24,13 @@ class AnswerCard extends Component {
     const {dispatch, id} = this.props;
     dispatch(answerQuestion(selectedOption, id));
     this.setState(() => ({selectedOption: "", toHome: true}));
+  }
+
+  componentDidMount() {
+    const { question} = this.props;
+    const { optionOne, optionTwo} = question;
+    this.setState({options: [optionOne.text, optionTwo.text]})
+
   }
 
   render() {
@@ -41,30 +51,30 @@ class AnswerCard extends Component {
                 </button>]}
                 closeIcon={<Icon>close</Icon>}
                 header={
-                  <CardTitle image="https://materializecss.com/images/sample-1.jpg"/>
+                  <CardTitle image={`https://avatars.dicebear.com/v2/bottts/${author}.svg?options[mood][]=surprised&options[height]=256`}/>
                 }
                 horizontal
                 revealIcon={<Icon>more_vert</Icon>}
               >
-                <h5>{author} asks</h5>
-                Would you rather
-                <>
-                  <RadioButton
-                    label={optionOne.text}
-                    value="optionOne"
-                    group="optionOne"
-                    onChange={this.handleChange}
-                    withGap
-                  />
-                  <RadioButton
-                    label={optionTwo.text}
-                    group="optionTwo"
-                    onChange={this.handleChange}
-                    withGap
-                  />
+                <p> {author} asks</p>
+                <ul className="collection with-header">
+                  <li className="collection-header"><h5>Would you rather</h5></li>
+                  <li className="collection-item">
+                    <RadioButton
+                      label={optionOne.text}
+                      group="option"
+                      onChange={this.handleChange}
+                      withGap
+                    />
+                    <RadioButton
+                      label={optionTwo.text}
+                      group="option"
+                      onChange={this.handleChange}
+                      withGap
+                    />
 
-                </>
-
+                  </li>
+                </ul>
               </Card>
             </Col>
           </Row>

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Card, Icon, CardTitle } from "react-materialize";
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
+import {Card, CardPanel, CardTitle, Col, Icon, Row} from "react-materialize";
 
 class QuestionCard extends Component {
   render() {
-    const { question, tab } = this.props;
-    const { id, author, optionOne, optionTwo } = question;
+    const {question, tab} = this.props;
+    const {id, author, optionOne, optionTwo} = question;
     return (
       <div>
         <Row>
-          <Col m={6} s={12}  push="m3">
+          <Col m={8} s={12} push="m2">
             <Card
               actions={[
                 <Link key={id} to={`/questions/${id}`}>
@@ -18,15 +18,21 @@ class QuestionCard extends Component {
               ]}
               closeIcon={<Icon>close</Icon>}
               header={
-                <CardTitle image={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&size=128&name=${author}`}>
-                  {author} asks
+                <CardTitle image={`https://avatars.dicebear.com/v2/bottts/${author}.svg?options[mood][]=surprised&options[height]=256`}>
+
                 </CardTitle>
               }
+              horizontal
               revealIcon={<Icon>more_vert</Icon>}
             >
-              Would you rather
-              <p>{optionOne.text}</p>
-              <p>{optionTwo.text}</p>
+              <p> {author} asks</p>
+              <ul className="collection with-header">
+                <li className="collection-header"><h5>Would you rather</h5></li>
+                <li className="collection-item">{optionOne.text}</li>
+                <li className="collection-item">{optionTwo.text}</li>
+              </ul>
+
+
             </Card>
           </Col>
         </Row>

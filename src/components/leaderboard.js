@@ -19,7 +19,7 @@ class Leaderboard extends Component {
             <Card key={user.id} title={user.name}>
               <Row>
                 <Col>
-                  <img src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&size=128&name=${user.name}`} alt=""/>
+                  <img src={`https://avatars.dicebear.com/v2/bottts/${user.id}.svg?options[mood][]=surprised&options[height]=150`} alt=""/>
                 </Col>
                 <Col>
                   <Row><span>Answered Questions: {Object.keys(user.answers).length}</span></Row>
