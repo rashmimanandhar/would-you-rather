@@ -30,7 +30,6 @@ class AnswerCard extends Component {
     }
     const {id, question} = this.props;
     const {author, optionOne, optionTwo} = question;
-    console.log(question);
     return (<div>
         <form className="answer-question" onSubmit={this.handleSubmit}>
           <Row>

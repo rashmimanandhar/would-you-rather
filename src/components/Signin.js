@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 class Signin extends Component {
   state = {
     selectedUser: "",
-    loggedIn: false
+
   };
 
   onUserChange = user => {
@@ -20,18 +20,15 @@ class Signin extends Component {
   handleSubmit = () => {
     const { selectedUser } = this.state;
     const { dispatch } = this.props;
+    this.setState(() => ({ selectedUser: ""}));
     dispatch(setAuthedUser(selectedUser));
-    this.setState(() => ({ selectedUser: "", loggedIn: true }));
   };
 
   render() {
-    const { usersId } = this.props;
-    const { selectedUser, loggedIn } = this.state;
-    console.log(loggedIn + " logged in");
-    if (loggedIn === true) {
-      console.log("redirected to");
-      return <Redirect to="/dashboard" />;
-    }
+    const { usersId, authedUser } = this.props;
+    const { selectedUser } = this.state;
+    console.log(authedUser, usersId);
+    console.log(selectedUser);
     return (
       <div className="valign-wrapper h-100 NavBar">
         <Row>
@@ -74,9 +71,10 @@ class Signin extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
-    usersId: Object.keys(users)
+    usersId: Object.keys(users),
+    authedUser
   };
 }
 export default connect(mapStateToProps)(Signin);

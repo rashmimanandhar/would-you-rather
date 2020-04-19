@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Navbar, Icon } from "react-materialize";
+import {setAuthedUser} from "../actions/authedUser";
 
 class Nav extends Component {
   handleLogout = () => {
-    console.log("handle Logout");
+    const {dispatch} = this.props;
+    dispatch(setAuthedUser(null));
   };
   render() {
     return (
@@ -28,16 +30,16 @@ class Nav extends Component {
           preventScrolling: true
         }}
       >
-        <NavLink to="/dashboard" activeClassName="active">
+        <NavLink to="/" exact activeClassName="active">
           Dashboard
         </NavLink>
-        <NavLink to="/add" activeClassName="active">
+        <NavLink to="/add"  activeClassName="active">
           New Poll
         </NavLink>
         <NavLink to="/leaderboard" activeClassName="active">
           Leader Board
         </NavLink>
-        <NavLink to="/" exact onClick={this.handleLogout}  activeClassName="active">
+        <NavLink to="/" onClick={this.handleLogout} activeClassName="">
           Logout
         </NavLink>
       </Navbar>

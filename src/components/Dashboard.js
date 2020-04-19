@@ -11,6 +11,7 @@ class Dashboard extends Component {
     }
   }
   render() {
+    console.log("dashboard ");
     if (this.props.authedUser === null) {
       return <Redirect to="/login"></Redirect>;
     }

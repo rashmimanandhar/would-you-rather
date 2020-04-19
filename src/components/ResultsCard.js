@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 class ResultsCard extends Component {
   render() {
     const {id, yourAns, question} = this.props;
-
+    console.log(id, yourAns, question);
     const {author, optionOne, optionTwo} = question;
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
@@ -35,10 +35,10 @@ class ResultsCard extends Component {
               <h5>{author} asks</h5>
               Would you rather
               <p>
-                {optionOne.text} has {percentageOptionOneVotes}% votes
+                {optionOne.text} has {percentageOptionOneVotes}% votes [Number of people who voted : {optionOneVotes}]
               </p>
               <p>
-                {optionTwo.text} has {percentageOptionTwoVotes}% votes
+                {optionTwo.text} has {percentageOptionTwoVotes}% votes [Number of people who voted : {optionTwoVotes}]
               </p>
 
               <div>Your answer is "{this.answer}"</div>
