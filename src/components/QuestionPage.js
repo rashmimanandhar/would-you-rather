@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import ResultsCard from "./ResultsCard";
 import AnswerCard from "./AnswerCard";
+import NotFound from "./404";
 
 class QuestionPage extends Component {
   render() {
-    const { id, questions, users, authedUser } = this.props;
+    const {id, questions, users, authedUser} = this.props;
     const userInfo = users.filter(user => {
       return user.id === authedUser;
     });
@@ -20,17 +21,21 @@ class QuestionPage extends Component {
     //check if the question is answered or not
     return (
       <div>
-        {isQuestionAnswered ? (
-          <ResultsCard id={id} yourAns={yourChoice} question={question} />
-        ) : (
-          <AnswerCard id={id} question={question} />
-        )}
+        {questions.length > 0 ?
+          isQuestionAnswered ? (
+            <ResultsCard id={id} yourAns={yourChoice} question={question}/>
+          ) : (
+            <AnswerCard id={id} question={question}/>
+          )
+          : <NotFound/>
+        }
       </div>
     );
   }
 }
-function mapStateToProps({ authedUser, questions, users }, props) {
-  const { id } = props.match.params;
+
+function mapStateToProps({authedUser, questions, users}, props) {
+  const {id} = props.match.params;
   return {
     id,
     questions: Object.values(questions),
@@ -38,4 +43,5 @@ function mapStateToProps({ authedUser, questions, users }, props) {
     authedUser
   };
 }
+
 export default connect(mapStateToProps)(QuestionPage);
